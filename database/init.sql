@@ -42,7 +42,8 @@ refill TEXT
 );
 
 INSERT INTO patients (first_name, last_name, id_num, password, birthdate, phone_number, medical_report) VALUES
-('abeer', 'riziq','123456789','lala','01/08/1993','0524786547','the patient has a severe allergy to dumbness');
+('abeer', 'riziq','123456789','lala','01/08/1993','0524786547','the patient has a severe allergy to dumbness'),
+('mervat','yossef,'234567890','1234','15/01/1993','052345677','...');
 
 INSERT INTO medications(medication_name,medication_usage,description,medication_image, pills_image, pills_num) VALUES
 ('Amlodipine','Take this medication by mouth with or without food as directed by your doctor, usually once daily.','Amlodipine is used with or without other medications to treat high blood pressure.','https://www.prescriptiondoctor.com/storage/product_images_th/amlodipine-tablet-500x500.png', 'https://img.medscapestatic.com/pi/features/drugdirectory/octupdate/ROX01020.jpg', '30'),
