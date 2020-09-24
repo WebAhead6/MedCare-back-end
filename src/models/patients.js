@@ -7,20 +7,23 @@ exports.getProfile = async (id) => {
 
 exports.getMedicationsList = async (profileId) => {
   const getMedList = await db.query(
-    `SELECT medications.medication_name, medications.treatment ,medications.pills_image 
+    `SELECT medications.medication_name, medications.treatment ,medications.pills_image, medications.id
     FROM medications INNER JOIN patients_medications
      On medications.id=patients_medications.medication_id Where patients_medications.patient_id=$1`,
     [profileId]
   );
-  return getMedList.rows[0];
+  return getMedList.rows;
 };
 
 exports.getMedicationId = async (profileId, medId) => {
+  console.log(medId);
   const getMedId = await db.query(
-    `SELECT med.medication_name, med.medication_usage,med.pills_image, med.      medication_image, med.medication_name, patients_medications.imprint, patients_medications.end_date 
+    `SELECT med.medication_name, med.medication_usage, 
+            med.pills_image, med.medication_image, med.medication_name, 
+            PM.imprint, PM.end_date, PM.pills_num
     FROM medications as med
-    INNER JOIN patients_medications On med.id=$1 
-    WHERE patients_medications.patient_id=$2`,
+    LEFT JOIN patients_medications as PM On med.id=$1 
+    WHERE PM.patient_id=$2 AND PM.medication_id=$1`,
     [medId, profileId]
   );
   return getMedId.rows[0];
