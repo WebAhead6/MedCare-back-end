@@ -52,7 +52,9 @@ INSERT INTO medications(medication_name,medication_usage,description,medication_
 ('Eplerenone','Take this medication by mouth, usually once or twice daily, with or without food, or as directed by your doctor','This medication is used alone or in combination with other medicines to treat high blood pressure.','https://www.crescentpharma.com/wp-content/uploads/2018/09/Eplerenone-25mg.png','https://img.medscapestatic.com/pi/features/drugdirectory/octupdate/SDZ53690.jpg','30','high blood pressure');
 
 INSERT INTO patients_medications (patient_id, medication_id, imprint, end_date,pills_num) VALUES 
-(1,1, '30mg', '23/10/2020','15');
+(1,1, '30mg', '23/10/2020','15'),
+(1,2, '10mg', '20/10/2020','20'),
+(1,3, '30mg', '23/10/2020','15');
 
 INSERT INTO patients_questions (patient_id, patient_q, doc_response) VALUES
 (1, 'Where can I have a blood test besides the clinic?', 'At the closest medical center');
