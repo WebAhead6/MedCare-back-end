@@ -46,3 +46,25 @@ pills_num = $1 WHERE patient_id = $2 AND medication_id=$3;`,
     [updatePillsNum, profileId, medId]
   );
 };
+
+exports.createNewPatient = async ({
+  firstName,
+  lastName,
+  identityNumber,
+  password,
+  birthDate,
+  phoneNumber,
+}) => {
+  const queryRes = await db.query(
+    `INSERT INTO patients(first_name,last_name,id_num, password,birthdate,phone_number) VALUES($1,$2,$3,$4,$5,$6)`,
+    [firstName, lastName, identityNumber, password, birthDate, phoneNumber]
+  );
+  return queryRes;
+};
+
+exports.getPatientData = async () => {
+  const getData = await db.query(
+    "select id,first_name,last_name,id_num from patients"
+  );
+  return getData.rows;
+};
