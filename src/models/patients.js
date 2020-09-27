@@ -36,12 +36,13 @@ exports.removePill = async (profileId, medId) => {
    medication_id=$2;`,
     [profileId, medId]
   );
+  console.log(data.rows[0].pills_num);
 
-  const updatePillsNum = data - 1;
+  const updatePillsNum = data.rows[0].pills_num - 1;
 
   return db.query(
-    `UPDATE patients_medication SET 
-pills_num = $1 WHERE pills_num = $2;`,
-    [updatePillsNum, data]
+    `UPDATE patients_medications SET 
+pills_num = $1 WHERE medication_id = $2;`,
+    [updatePillsNum, medId]
   );
 };
