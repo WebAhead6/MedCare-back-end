@@ -61,3 +61,10 @@ exports.createNewPatient = async ({
   );
   return queryRes;
 };
+
+exports.getPatientData = async () => {
+  const getData = await db.query(
+    "select id,first_name,last_name,id_num from patients"
+  );
+  return getData.rows;
+};
