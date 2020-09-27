@@ -42,7 +42,7 @@ exports.removePill = async (profileId, medId) => {
 
   return db.query(
     `UPDATE patients_medications SET 
-pills_num = $1 WHERE medication_id = $2;`,
-    [updatePillsNum, medId]
+pills_num = $1 WHERE patient_id = $2 AND medication_id=$3;`,
+    [updatePillsNum, profileId, medId]
   );
 };
