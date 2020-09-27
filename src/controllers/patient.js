@@ -57,14 +57,21 @@ exports.register = async (req, res) => {
 
     const addPatient = await model.createNewPatient(newPatient);
 
-    res
-      .status(200)
-      .json({
-        message: "user added successfully",
-        code: 200,
-        data: addPatient,
-      });
+    res.status(200).json({
+      message: "user added successfully",
+      code: 200,
+      data: addPatient,
+    });
   } catch ({ message }) {
     return res.status(200).json({ message });
+  }
+};
+
+exports.patientList = async (req, res) => {
+  try {
+    const patientListData = await model.getPatientData();
+    res.status(200).json({ code: 200, data: patientListData });
+  } catch ({ message }) {
+    return res.status(500).json({ error: message });
   }
 };
