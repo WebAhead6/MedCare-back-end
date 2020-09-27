@@ -46,3 +46,18 @@ pills_num = $1 WHERE medication_id = $2;`,
     [updatePillsNum, medId]
   );
 };
+
+exports.createNewPatient = async ({
+  firstName,
+  lastName,
+  identityNumber,
+  password,
+  birthDate,
+  phoneNumber,
+}) => {
+  const queryRes = await db.query(
+    `INSERT INTO patients(first_name,last_name,id_num, password,birthdate,phone_number) VALUES($1,$2,$3,$4,$5,$6)`,
+    [firstName, lastName, identityNumber, password, birthDate, phoneNumber]
+  );
+  return queryRes;
+};

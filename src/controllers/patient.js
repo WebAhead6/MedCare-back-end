@@ -1,4 +1,5 @@
 const model = require("../models/patients");
+const bcrypt = require("bcrypt");
 
 exports.profile = async (req, res) => {
   try {
@@ -38,5 +39,32 @@ exports.removePill = async (req, res) => {
     res.status(200).json({ code: 200, data: pillsData });
   } catch ({ message }) {
     return res.status(500).json({ error: message });
+  }
+};
+
+exports.register = async (req, res) => {
+  const newPatient = ({
+    firstName,
+    lastName,
+    identityNumber,
+    password,
+    birthdate,
+    gender,
+    phoneNumber,
+  } = req.body);
+  try {
+    newPatient.password = await bcrypt.hash(req.body.password, 10);
+
+    const addPatient = await model.createNewPatient(newPatient);
+
+    res
+      .status(200)
+      .json({
+        message: "user added successfully",
+        code: 200,
+        data: addPatient,
+      });
+  } catch ({ message }) {
+    return res.status(200).json({ message });
   }
 };
