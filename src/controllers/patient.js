@@ -30,3 +30,13 @@ exports.medicationId = async (req, res) => {
     return res.status(500).json({ error: message });
   }
 };
+
+exports.removePill = async (req, res) => {
+  try {
+    const { profileId, medId } = req.params;
+    const pillsData = await model.removePill(profileId, medId);
+    res.status(200).json({ code: 200, data: pillsData });
+  } catch ({ message }) {
+    return res.status(500).json({ error: message });
+  }
+};

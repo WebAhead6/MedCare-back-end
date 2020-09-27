@@ -28,3 +28,21 @@ exports.getMedicationId = async (profileId, medId) => {
   );
   return getMedId.rows[0];
 };
+
+exports.removePill = async (profileId, medId) => {
+  const data = await db.query(
+    `SELECT pills_num
+   FROM patients_medications WHERE patient_id = $1 and 
+   medication_id=$2;`,
+    [profileId, medId]
+  );
+  console.log(data.rows[0].pills_num);
+
+  const updatePillsNum = data.rows[0].pills_num - 1;
+
+  return db.query(
+    `UPDATE patients_medications SET 
+pills_num = $1 WHERE medication_id = $2;`,
+    [updatePillsNum, medId]
+  );
+};
