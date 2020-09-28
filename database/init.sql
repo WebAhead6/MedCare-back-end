@@ -56,6 +56,8 @@ INSERT INTO patients_medications (patient_id, medication_id, imprint, end_date,p
 (1,2, '10mg', '20/10/2020','20'),
 (1,3, '30mg', '23/10/2020','15');
 
+
+
 INSERT INTO patients_questions (patient_id, patient_q, doc_response) VALUES
 (1, 'Where can I have a blood test besides the clinic?', 'At the closest medical center');
 
