@@ -39,7 +39,6 @@ CREATE TABLE patients_questions (
 patient_id INTEGER REFERENCES patients(id),
 patient_q TEXT,
 doc_response TEXT,
-refill TEXT
 );
 
 INSERT INTO patients (first_name, last_name, id_num, password, birthdate, phone_number, medical_report) VALUES
@@ -57,6 +56,6 @@ INSERT INTO patients_medications (patient_id, medication_id, imprint, end_date,p
 (1,3, '30mg', '23/10/2020','15');
 
 INSERT INTO patients_questions (patient_id, patient_q, doc_response) VALUES
-(1, 'Where can I have a blood test besides the clinic?', 'At the closest medical center');
+(1, 'Make an appointment', 'you can visit the clinic on Tuesday next week at 10:30 am');
 
 COMMIT;
