@@ -107,3 +107,15 @@ exports.patientList = async (req, res) => {
     return res.status(500).json({ error: message });
   }
 };
+
+exports.addQues = async (req, res) => {
+  try {
+    console.log(req.body);
+    const patientId = req.body.id;
+    const patientQues = req.body.message;
+    const newQues = await model.enterPatientQue(patientId, patientQues);
+    res.status(200).json({ code: 200, data: newQues });
+  } catch ({ message }) {
+    return res.status(500).json({ error: message });
+  }
+};

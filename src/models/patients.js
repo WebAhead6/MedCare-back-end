@@ -75,3 +75,11 @@ exports.getPatientData = async () => {
   );
   return getData.rows;
 };
+
+exports.enterPatientQue = (patient_id, patient_q) => {
+  return db.query(
+    `INSERT INTO patients_questions(patient_id,patient_q)
+  VALUES($1,$2)`,
+    [patient_id, patient_q]
+  );
+};
