@@ -1,5 +1,10 @@
 const db = require("../../database/connection");
 
+exports.getDataById = async (id) => {
+  const data = await db.query("select * from patients where id_num=$1", [id]);
+
+  return data.rows.length ? data.rows[0] : null;
+};
 exports.getProfile = async (id) => {
   const getData = await db.query("select * from patients where id=$1", [id]);
   return getData.rows[0];
@@ -55,6 +60,8 @@ exports.createNewPatient = async ({
   birthDate,
   phoneNumber,
 }) => {
+  const exists = await exports.getDataById(identityNumber);
+  if (exists) throw new Error("id already exists in the database");
   const queryRes = await db.query(
     `INSERT INTO patients(first_name,last_name,id_num, password,birthdate,phone_number) VALUES($1,$2,$3,$4,$5,$6)`,
     [firstName, lastName, identityNumber, password, birthDate, phoneNumber]
