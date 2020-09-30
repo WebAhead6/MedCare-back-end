@@ -83,3 +83,9 @@ exports.enterPatientQue = (patient_id, patient_q) => {
     [patient_id, patient_q]
   );
 };
+exports.deleteMedication = (patientId, medicationId) => {
+  return db.query(
+    `DELETE FROM patients_medications WHERE patient_id = $1 AND medication_id=$2;`,
+    [patientId, medicationId]
+  );
+};

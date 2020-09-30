@@ -119,3 +119,23 @@ exports.addQues = async (req, res) => {
     return res.status(500).json({ error: message });
   }
 };
+
+exports.doctorProfile = async (req, res) => {
+  try {
+    const profileData = await model.getProfile(req.params.id);
+    res.status(200).json({ code: 200, data: profileData });
+  } catch ({ message }) {
+    return res.status(500).json({ error: message });
+  }
+};
+
+exports.mediRemove = async (req, res) => {
+  try {
+    console.log(req.body);
+    const { patientId, medId } = req.params;
+    const medData = await model.deleteMedication(patientId, medId);
+    res.status(200).json({ code: 200, data: medData });
+  } catch ({ message }) {
+    return res.status(500).json({ error: message });
+  }
+};
