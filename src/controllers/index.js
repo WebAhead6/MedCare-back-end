@@ -4,6 +4,7 @@ const router = express.Router();
 // const middlewares = require("../middlewares");
 const patients = require("./patient");
 
+// router.use(middlewares.autoCheck);
 router.post("/patient/login", patients.login);
 router.get("/profile/:id", patients.profile);
 router.get("/medicationsList/:profileId", patients.medicationsList);
