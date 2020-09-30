@@ -12,4 +12,6 @@ router.post("/medication/remove/:profileId/:medId", patients.removePill);
 router.post("/doctor/register", patients.register);
 router.get("/doctor/PatientList", patients.patientList);
 router.post("/patient/ques", patients.addQues);
+router.get("/doctor/profile", patients.doctorProfile);
+router.get("/mediRemove/:profileId/:medId", patients.mediRemove);
 module.exports = router;

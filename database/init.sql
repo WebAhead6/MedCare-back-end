@@ -38,7 +38,7 @@ CREATE TABLE patients_questions (
       id SERIAL PRIMARY KEY,
 patient_id INTEGER REFERENCES patients(id),
 patient_q TEXT,
-doc_response TEXT,
+doc_response TEXT
 );
 
 INSERT INTO patients (first_name, last_name, id_num, password, birthdate, phone_number, medical_report) VALUES
