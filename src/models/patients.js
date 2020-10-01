@@ -12,7 +12,7 @@ exports.getProfile = async (id) => {
 
 exports.getMedicationsList = async (profileId) => {
   const getMedList = await db.query(
-    `SELECT medications.medication_name, medications.treatment ,medications.pills_image, medications.id
+    `SELECT medications.medication_name, medications.treatment ,medications.pills_image, medications.id,patients_medications.pills_num
     FROM medications INNER JOIN patients_medications
      On medications.id=patients_medications.medication_id Where patients_medications.patient_id=$1`,
     [profileId]
