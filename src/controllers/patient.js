@@ -55,7 +55,6 @@ exports.medicationsList = async (req, res) => {
 exports.medicationId = async (req, res) => {
   try {
     const { profileId, medId } = req.params;
-    console.log(req.params);
     const medDetails = await model.getMedicationId(profileId, medId);
 
     res.status(200).json({ code: 200, data: medDetails });
@@ -110,7 +109,6 @@ exports.patientList = async (req, res) => {
 
 exports.addQues = async (req, res) => {
   try {
-    console.log(req.body);
     const patientId = req.body.id;
     const patientQues = req.body.message;
     const newQues = await model.enterPatientQue(patientId, patientQues);
@@ -131,9 +129,9 @@ exports.doctorProfile = async (req, res) => {
 
 exports.mediRemove = async (req, res) => {
   try {
-    console.log(req.body);
-    const { patientId, medId } = req.params;
-    const medData = await model.deleteMedication(patientId, medId);
+    console.log("hhh", req.params);
+    const { profileId, medId } = req.params;
+    const medData = await model.deleteMedication(profileId, medId);
     res.status(200).json({ code: 200, data: medData });
   } catch ({ message }) {
     return res.status(500).json({ error: message });
